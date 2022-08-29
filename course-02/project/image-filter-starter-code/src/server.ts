@@ -41,8 +41,16 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       res.status(400).send("Invalid URL");
       return;
     }
-
-    const filteredImagePath: string = await filterImageFromURL(imagePath);
+    
+    let filteredImagePath: string;
+    try {
+      filteredImagePath = await filterImageFromURL(imagePath);
+    }
+    catch (error) {
+      res.status(422).send("Unable to process image: " + error);
+      return;
+    }
+    
     res.sendFile(filteredImagePath, function(error) {
       if (error)
       {
