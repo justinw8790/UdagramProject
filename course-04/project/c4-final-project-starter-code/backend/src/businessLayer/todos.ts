@@ -1,16 +1,10 @@
 import { TodoItem } from '../models/TodoItem'
 import { CreateTodoRequest } from '../requests/CreateTodoRequest'
 import { UpdateTodoRequest } from '../requests/UpdateTodoRequest'
-import { createLogger } from '../utils/logger'
-import * as uuid from 'uuid'
-import { parseUserId } from '../auth/utils';
-import { APIGatewayProxyEvent } from 'aws-lambda/trigger/api-gateway-proxy';
-import { getUserId } from '../lambda/utils';
 import { TodoUpdate } from '../models/TodoUpdate';
-import { todosAccess } from './todosAccess'
-import { attachmentUtils } from './attachmentUtils'
+import { todosAccess } from '../dataLayer/todosAccess'
+import { attachmentUtils } from '../helpers/attachmentUtils'
 
-const logger = createLogger('Todos')
 const todosAccess2 = new todosAccess()
 const attachmentUtil = new attachmentUtils()
 
@@ -19,11 +13,9 @@ const s3BucketLocation: string = process.env.S3_BUCKET_LOCATION
 
 export function createTodo(
     createTodoRequest: CreateTodoRequest,
-    jwtToken: string
+    userId: string,
+    todoId: string
   ): Promise<TodoItem> {
-    logger.info('Retrieving userId from jwtToken')
-    const userId: string = parseUserId(jwtToken)
-    const todoId: string = uuid.v4()
 
     return todosAccess2.createTodo({
       userId,
@@ -35,30 +27,21 @@ export function createTodo(
     })
 }
 
-export function deleteTodo(todoId: string, jwtToken: string): Promise<string> {
-    logger.info('Retrieving userId from jwtToken')
-    const userId: string = parseUserId(jwtToken)
-
+export function deleteTodo(todoId: string, userId: string): Promise<string> {
     return todosAccess2.deleteTodo(todoId, userId)
 }
 
 export async function getTodos(
-    event: APIGatewayProxyEvent
+    userId: string
   ): Promise<TodoItem[]> {
-    logger.info('Retrieving userId from event')
-    const userId: string = getUserId(event)
-
     return todosAccess2.getTodos(userId)
 }
 
 export function updateTodo(
     updateTodoRequest: UpdateTodoRequest,
     todoId: string,
-    jwtToken: string
+    userId: string
   ): Promise<TodoUpdate> {
-    logger.info('Retrieving userId from jwtToken')
-    const userId: string = parseUserId(jwtToken)
-
     return todosAccess2.updateTodo(updateTodoRequest, todoId, userId)
 }
   

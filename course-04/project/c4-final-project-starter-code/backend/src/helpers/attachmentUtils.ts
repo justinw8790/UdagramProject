@@ -1,11 +1,13 @@
 import * as AWS from 'aws-sdk'
+import * as AWSXRay from 'aws-xray-sdk'
+const XAWS = AWSXRay.captureAWS(AWS)
 import { createLogger } from '../utils/logger'
 import { Types } from 'aws-sdk/clients/s3'
 
 export class attachmentUtils {
     constructor(
         private logger = createLogger('AttachmentUtils'),
-        private s3Client: Types = new AWS.S3({ signatureVersion: 'v4' }),
+        private s3Client: Types = new XAWS.S3({ signatureVersion: 'v4' }),
         private s3BucketName: string = process.env.S3_BUCKET_NAME
       ) {}
 
