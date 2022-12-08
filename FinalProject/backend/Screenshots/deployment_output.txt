@@ -1,0 +1,165 @@
+PS C:\Users\justi\OneDrive\Documents\Udacity_Udagram_Project\UdagramProject\FinalProject\backend> serverless deploy --verbose --aws-profile serverless
+Running "serverless" from node_modules
+
+Warning: Invalid configuration encountered
+  at 'functions.GetImages.events.0.http': must have required property 'reqValidatorName'
+  at 'functions.AddFriend.events.0.http': must have required property 'reqValidatorName'
+  at 'functions.DeleteFriend.events.0.http': must have required property 'reqValidatorName'
+  at 'functions.CreateImage.events.0.http': unrecognized property 'documentation'
+  at 'functions.UpdateImage.events.0.http': unrecognized property 'documentation'
+  at 'functions.DeleteImage.events.0.http': must have required property 'reqValidatorName'
+  at 'functions.GenerateUploadUrl.events.0.http': must have required property 'reqValidatorName'
+
+Learn more about configuration validation here: http://slss.io/configuration-validation
+
+Deploying serverless-image-app to stage dev (us-east-1)
+
+Packaging
+Using configuration:
+{
+  "webpackConfig": "webpack.config.js",
+  "includeModules": false,
+  "packager": "npm",
+  "packagerOptions": {},
+  "keepOutputDirectory": false,
+  "concurrency": 8
+}
+Removing C:\Users\justi\OneDrive\Documents\Udacity_Udagram_Project\UdagramProject\FinalProject\backend\.webpack
+[Webpack] Building with Webpack
+(node:22888) [DEP_WEBPACK_DEPRECATION_ARRAY_TO_SET] DeprecationWarning: Compilation.modules was changed from Array to Set (using Array method 'reduce' is deprecated)
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:22888) [DEP_WEBPACK_MODULE_ERRORS] DeprecationWarning: Module.errors was removed (use getErrors instead)
+[Webpack] Packaging modules                                                                                                                                  
+Zip service: C:\Users\justi\OneDrive\Documents\Udacity_Udagram_Project\UdagramProject\FinalProject\backend\.webpack\service [1949 ms]
+[Webpack] Copying existing artifacts
+Setting artifact for function 'Auth' to '.serverless\serverless-image-app.zip'                                                                               
+Setting artifact for function 'GetImages' to '.serverless\serverless-image-app.zip'
+Setting artifact for function 'AddFriend' to '.serverless\serverless-image-app.zip'                                                                          
+Setting artifact for function 'DeleteFriend' to '.serverless\serverless-image-app.zip'                                                                       
+Setting artifact for function 'CreateImage' to '.serverless\serverless-image-app.zip'                                                                        
+Setting artifact for function 'UpdateImage' to '.serverless\serverless-image-app.zip'                                                                        
+Setting artifact for function 'DeleteImage' to '.serverless\serverless-image-app.zip'                                                                        
+Setting artifact for function 'GenerateUploadUrl' to '.serverless\serverless-image-app.zip'                                                                  
+Remove C:\Users\justi\OneDrive\Documents\Udacity_Udagram_Project\UdagramProject\FinalProject\backend\.webpack
+Removing C:\Users\justi\OneDrive\Documents\Udacity_Udagram_Project\UdagramProject\FinalProject\backend\.webpack done
+Generating custom CloudFormation resources
+Tracing DISABLED for function "serverless-image-app-dev-Auth"
+Tracing DISABLED for function "serverless-image-app-dev-GetImages"
+Tracing DISABLED for function "serverless-image-app-dev-AddFriend"                                                                                           
+Tracing DISABLED for function "serverless-image-app-dev-DeleteFriend"                                                                                        
+Tracing DISABLED for function "serverless-image-app-dev-CreateImage"                                                                                         
+Tracing DISABLED for function "serverless-image-app-dev-UpdateImage"                                                                                         
+Tracing DISABLED for function "serverless-image-app-dev-DeleteImage"                                                                                         
+Tracing DISABLED for function "serverless-image-app-dev-GenerateUploadUrl"                                                                                   
+Retrieving CloudFormation stack                                                                                                                              
+Uploading
+Uploading CloudFormation file to S3
+Uploading State file to S3                                                                                                                                   
+Uploading service serverless-image-app.zip file to S3 (16.74 MB)
+Uploading custom CloudFormation resources
+Updating CloudFormation stack
+Creating new change set
+Waiting for new change set to be created
+Change Set did not reach desired state, retrying
+Change Set did not reach desired state, retrying
+Change Set did not reach desired state, retrying
+Change Set did not reach desired state, retrying
+Change Set did not reach desired state, retrying
+Change Set did not reach desired state, retrying
+Executing created change set
+  UPDATE_IN_PROGRESS - AWS::CloudFormation::Stack - serverless-image-app-dev
+  UPDATE_IN_PROGRESS - AWS::Lambda::Function - DeleteFriendLambdaFunction
+  UPDATE_IN_PROGRESS - AWS::Lambda::Function - DeleteImageLambdaFunction
+  UPDATE_IN_PROGRESS - AWS::Lambda::Function - UpdateImageLambdaFunction                                                                                     
+  UPDATE_IN_PROGRESS - AWS::Lambda::Function - GenerateUploadUrlLambdaFunction                                                                               
+  UPDATE_IN_PROGRESS - AWS::Lambda::Function - AuthLambdaFunction                                                                                            
+  UPDATE_IN_PROGRESS - AWS::Lambda::Function - AddFriendLambdaFunction                                                                                       
+  UPDATE_IN_PROGRESS - AWS::Lambda::Function - CustomDashresourceDashapigwDashcwDashroleLambdaFunction                                                       
+  UPDATE_IN_PROGRESS - AWS::Lambda::Function - GetImagesLambdaFunction                                                                                       
+  UPDATE_IN_PROGRESS - AWS::Lambda::Function - CreateImageLambdaFunction                                                                                     
+  UPDATE_COMPLETE - AWS::Lambda::Function - GenerateUploadUrlLambdaFunction                                                                                  
+  UPDATE_COMPLETE - AWS::Lambda::Function - AddFriendLambdaFunction
+  UPDATE_COMPLETE - AWS::Lambda::Function - DeleteImageLambdaFunction                                                                                        
+  UPDATE_COMPLETE - AWS::Lambda::Function - AuthLambdaFunction                                                                                               
+  UPDATE_COMPLETE - AWS::Lambda::Function - CustomDashresourceDashapigwDashcwDashroleLambdaFunction
+  UPDATE_COMPLETE - AWS::Lambda::Function - DeleteFriendLambdaFunction                                                                                       
+  UPDATE_COMPLETE - AWS::Lambda::Function - UpdateImageLambdaFunction                                                                                        
+  UPDATE_COMPLETE - AWS::Lambda::Function - GetImagesLambdaFunction
+  UPDATE_COMPLETE - AWS::Lambda::Function - CreateImageLambdaFunction                                                                                        
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - GenerateUploadUrlLambdaVersion3H5t8pr4yANU7Co1YeUOgZJ7XVVmOT23bwlHHjVQI                                        
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - AddFriendLambdaVersion9XOOSMfFIjv1Y934aVqSfK0gKe09Fiu4P1TGlaE3WZ0                                              
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - DeleteImageLambdaVersion49xKQWpRI4WwUpWt6WfbYJHCBF5nNQlDjlHGjXHmuY                                             
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - UpdateImageLambdaVersionKmFDAyI8THmUNqBoHiAEKJ318BRFcUueyKDtgugOlA                                             
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - DeleteFriendLambdaVersion1LoVGBlrH7KZsoOUCJ83j7KtlVeibud1dzsSDtafB8                                            
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - AuthLambdaVersionL3QumiYMa8TmN55pvQh3Gs3puxPbfDHUIRAtAmrZuHQ
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - GenerateUploadUrlLambdaVersion3H5t8pr4yANU7Co1YeUOgZJ7XVVmOT23bwlHHjVQI                                        
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - AddFriendLambdaVersion9XOOSMfFIjv1Y934aVqSfK0gKe09Fiu4P1TGlaE3WZ0                                              
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - DeleteImageLambdaVersion49xKQWpRI4WwUpWt6WfbYJHCBF5nNQlDjlHGjXHmuY                                             
+  CREATE_COMPLETE - AWS::Lambda::Version - AddFriendLambdaVersion9XOOSMfFIjv1Y934aVqSfK0gKe09Fiu4P1TGlaE3WZ0                                                 
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - UpdateImageLambdaVersionKmFDAyI8THmUNqBoHiAEKJ318BRFcUueyKDtgugOlA                                             
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - GetImagesLambdaVersionZ4um6I9sLVoI4Kf3v8o1wJSbIvqECz70UWKQFPccl4                                               
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - AuthLambdaVersionL3QumiYMa8TmN55pvQh3Gs3puxPbfDHUIRAtAmrZuHQ
+  CREATE_COMPLETE - AWS::Lambda::Version - DeleteImageLambdaVersion49xKQWpRI4WwUpWt6WfbYJHCBF5nNQlDjlHGjXHmuY                                                
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - DeleteFriendLambdaVersion1LoVGBlrH7KZsoOUCJ83j7KtlVeibud1dzsSDtafB8                                            
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - CreateImageLambdaVersionPop0HEmkEpTFQbvr2vOCDeT8xf6cHWzjYE0JDdXDc                                              
+  CREATE_COMPLETE - AWS::Lambda::Version - GenerateUploadUrlLambdaVersion3H5t8pr4yANU7Co1YeUOgZJ7XVVmOT23bwlHHjVQI                                           
+  CREATE_COMPLETE - AWS::Lambda::Version - AuthLambdaVersionL3QumiYMa8TmN55pvQh3Gs3puxPbfDHUIRAtAmrZuHQ
+  CREATE_COMPLETE - AWS::Lambda::Version - UpdateImageLambdaVersionKmFDAyI8THmUNqBoHiAEKJ318BRFcUueyKDtgugOlA                                                
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - GetImagesLambdaVersionZ4um6I9sLVoI4Kf3v8o1wJSbIvqECz70UWKQFPccl4                                               
+  CREATE_COMPLETE - AWS::Lambda::Version - DeleteFriendLambdaVersion1LoVGBlrH7KZsoOUCJ83j7KtlVeibud1dzsSDtafB8                                               
+  CREATE_COMPLETE - AWS::Lambda::Version - GetImagesLambdaVersionZ4um6I9sLVoI4Kf3v8o1wJSbIvqECz70UWKQFPccl4                                                  
+  CREATE_IN_PROGRESS - AWS::Lambda::Version - CreateImageLambdaVersionPop0HEmkEpTFQbvr2vOCDeT8xf6cHWzjYE0JDdXDc                                              
+  CREATE_COMPLETE - AWS::Lambda::Version - CreateImageLambdaVersionPop0HEmkEpTFQbvr2vOCDeT8xf6cHWzjYE0JDdXDc                                                 
+  CREATE_IN_PROGRESS - AWS::ApiGateway::Deployment - ApiGatewayDeployment1670469461114                                                                       
+  CREATE_IN_PROGRESS - AWS::ApiGateway::Deployment - ApiGatewayDeployment1670469461114
+  CREATE_COMPLETE - AWS::ApiGateway::Deployment - ApiGatewayDeployment1670469461114                                                                          
+  UPDATE_COMPLETE_CLEANUP_IN_PROGRESS - AWS::CloudFormation::Stack - serverless-image-app-dev                                                                
+  DELETE_SKIPPED - AWS::Lambda::Version - CreateImageLambdaVersionuIRQ4q3CPhPT6IcxEjmgvQv3lSdJ0gyeLg9NSzaY
+  DELETE_SKIPPED - AWS::Lambda::Version - UpdateImageLambdaVersioncFMQXysO68e6o9XQzA1WhDaWunAxJIqisYR8ylF2M
+  DELETE_SKIPPED - AWS::Lambda::Version - DeleteImageLambdaVersion0PIW1NSvZ5syqPWiRIGSquLqTnD01OOc5QOU60JUEs                                                 
+  DELETE_SKIPPED - AWS::Lambda::Version - GenerateUploadUrlLambdaVersionTg6NomH22Kc6zEi51o0otIIwQ4VqgkKHClic84vaNA                                           
+  DELETE_IN_PROGRESS - AWS::ApiGateway::Deployment - ApiGatewayDeployment1670468925975                                                                       
+  DELETE_SKIPPED - AWS::Lambda::Version - DeleteFriendLambdaVersionPS1UD0LGUK1gYQKEI98C2EYgphuJzBu2VEFdsbd8Gw                                                
+  DELETE_SKIPPED - AWS::Lambda::Version - GetImagesLambdaVersionxVWiF3KgjTRA8oGQtbLt92PfyIjAIvNN9W6SdwS4                                                     
+  DELETE_SKIPPED - AWS::Lambda::Version - AuthLambdaVersion8VrFpUOooh0S9i74dnd0S3hYTD3DhTXj0ZGXdsI                                                           
+  DELETE_SKIPPED - AWS::Lambda::Version - AddFriendLambdaVersionSOyfGelYEnZSpExmgLd5UCrVglIeoZ9dI9kBzuE29E
+  DELETE_COMPLETE - AWS::ApiGateway::Deployment - ApiGatewayDeployment1670468925975                                                                          
+  UPDATE_COMPLETE - AWS::CloudFormation::Stack - serverless-image-app-dev                                                                                    
+Retrieving CloudFormation stack                                                                                                                              
+Removing old service artifacts from S3                                                                                                                       
+
+✔ Service deployed to stack serverless-image-app-dev (165s)
+
+dashboard: https://app.serverless.com/justin8790/apps/serverless-image-app/serverless-image-app/dev/us-east-1                                                
+endpoints:
+  GET - https://73cuhns5w6.execute-api.us-east-1.amazonaws.com/dev/images                                                                                    
+  POST - https://73cuhns5w6.execute-api.us-east-1.amazonaws.com/dev/friends
+  DELETE - https://73cuhns5w6.execute-api.us-east-1.amazonaws.com/dev/friends/{friendId}
+  POST - https://73cuhns5w6.execute-api.us-east-1.amazonaws.com/dev/images
+  PATCH - https://73cuhns5w6.execute-api.us-east-1.amazonaws.com/dev/images/{imageId}
+  DELETE - https://73cuhns5w6.execute-api.us-east-1.amazonaws.com/dev/images/{imageId}
+  POST - https://73cuhns5w6.execute-api.us-east-1.amazonaws.com/dev/images/{imageId}/attachment
+functions:
+  Auth: serverless-image-app-dev-Auth (17 MB)                                                                                                                
+  GetImages: serverless-image-app-dev-GetImages (17 MB)
+  AddFriend: serverless-image-app-dev-AddFriend (17 MB)
+  DeleteFriend: serverless-image-app-dev-DeleteFriend (17 MB)
+  CreateImage: serverless-image-app-dev-CreateImage (17 MB)
+  UpdateImage: serverless-image-app-dev-UpdateImage (17 MB)
+  DeleteImage: serverless-image-app-dev-DeleteImage (17 MB)
+  GenerateUploadUrl: serverless-image-app-dev-GenerateUploadUrl (17 MB)
+
+Stack Outputs:                                                                                                                                               
+  AuthLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:473294277622:function:serverless-image-app-dev-Auth:19
+  DeleteImageLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:473294277622:function:serverless-image-app-dev-DeleteImage:19
+  GenerateUploadUrlLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:473294277622:function:serverless-image-app-dev-GenerateUploadUrl:21
+  AddFriendLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:473294277622:function:serverless-image-app-dev-AddFriend:20
+  DeleteFriendLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:473294277622:function:serverless-image-app-dev-DeleteFriend:21
+  EnterpriseLogAccessIamRole: arn:aws:iam::473294277622:role/serverless-image-app-dev-EnterpriseLogAccessIamRol-XAK76TT19NGN
+  UpdateImageLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:473294277622:function:serverless-image-app-dev-UpdateImage:19
+  CreateImageLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:473294277622:function:serverless-image-app-dev-CreateImage:21
+  ServiceEndpoint: https://73cuhns5w6.execute-api.us-east-1.amazonaws.com/dev
+  ServerlessDeploymentBucketName: serverless-image-app-dev-serverlessdeploymentbuck-16ftd77gs5zo1
+  GetImagesLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:473294277622:function:serverless-image-app-dev-GetImages:20
+
+3 deprecations found: run 'serverless doctor' for more details                                  
