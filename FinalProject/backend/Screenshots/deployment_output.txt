@@ -12,7 +12,7 @@ Warning: Invalid configuration encountered
 
 Learn more about configuration validation here: http://slss.io/configuration-validation
 
-Deploying serverless-image-app to stage dev (us-east-1)
+Deploying serverless-image-app to stage dev (us-east-1) 
 
 Packaging
 Using configuration:
