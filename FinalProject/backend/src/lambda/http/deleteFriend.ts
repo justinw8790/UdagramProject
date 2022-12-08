@@ -18,7 +18,7 @@ export const handler = middy(
     const userId: string = parseUserId(jwtToken)
     logger.info(`User id parsed: ${userId}`)
 
-    const friendId = event.pathParameters.friendId
+    const friendId = decodeURI(event.pathParameters.friendId)
     const friendItem = await deleteFriend(friendId, userId)
 
     return {

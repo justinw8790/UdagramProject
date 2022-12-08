@@ -66,8 +66,9 @@ functions:
         Action:
           - dynamodb:Query
         Resource: 
-          - arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}/*
-          - arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.FRIENDS_TABLE}/*
+          - arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}
+          - arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}/index/${self:provider.environment.IMAGES_CREATED_AT_INDEX}
+          - arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.FRIENDS_TABLE}
       - Effect: Allow
         Action:
           - s3:GetObject
@@ -88,12 +89,12 @@ functions:
       - Effect: Allow
         Action:
           - dynamodb:Query
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}/*
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}
       - Effect: Allow
         Action:
           - dynamodb:Query
           - dynamodb:PutItem
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.FRIENDS_TABLE}/*
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.FRIENDS_TABLE}
 
   DeleteFriend:
     handler: src/lambda/http/deleteFriend.handler
@@ -107,12 +108,12 @@ functions:
       - Effect: Allow
         Action:
           - dynamodb:Query
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}/*
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}
       - Effect: Allow
         Action:
           - dynamodb:Query
           - dynamodb:DeleteItem
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.FRIENDS_TABLE}/*
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.FRIENDS_TABLE}
 
   CreateImage:
     handler: src/lambda/http/createImage.handler

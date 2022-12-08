@@ -8,6 +8,7 @@ import { LogIn } from './components/LogIn'
 import { NotFound } from './components/NotFound'
 import { Images } from './components/Images'
 import { AddFriend } from './components/AddFriend'
+import { RemoveFriend } from './components/RemoveFriend'
 
 export interface AppProps {}
 
@@ -62,7 +63,11 @@ export default class App extends Component<AppProps, AppState> {
         </Menu.Item>
 
         <Menu.Item name="addFriend">
-          <Link to="/friends">Add friend</Link>
+          <Link to="/friends/add">Add friend</Link>
+        </Menu.Item>
+
+        <Menu.Item name="removeFriend">
+          <Link to="/friends/remove">Remove friend</Link>
         </Menu.Item>
 
         <Menu.Menu position="right">{this.logInLogOutButton()}</Menu.Menu>
@@ -84,18 +89,6 @@ export default class App extends Component<AppProps, AppState> {
         </Menu.Item>
       )
     }
-  }
-
-  addFriend() {
-    return (
-      <Route
-          path="/friends"
-          exact
-          render={props => {
-            return <AddFriend {...props} auth={this.props.auth} />
-          }}
-        />
-    )
   }
 
   generateCurrentPage() {
@@ -122,10 +115,18 @@ export default class App extends Component<AppProps, AppState> {
         />
         
         <Route
-          path="/friends"
+          path="/friends/add"
           exact
           render={props => {
             return <AddFriend {...props} auth={this.props.auth} />
+          }}
+        />
+
+<Route
+          path="/friends/remove"
+          exact
+          render={props => {
+            return <RemoveFriend {...props} auth={this.props.auth} />
           }}
         />
 

@@ -1,27 +1,27 @@
 import * as React from 'react'
 import { Form, Button } from 'semantic-ui-react'
 import Auth from '../auth/Auth'
-import { addFriend } from '../api/friends-api'
+import { deleteFriend } from '../api/friends-api'
 
 enum UploadState {
   NoFriend,
-  AddingFriend
+  RemovingFriend
 }
 
-interface AddFriendProps {
+interface RemoveFriendProps {
   auth: Auth
 }
 
-interface AddFriendState {
+interface RemoveFriendState {
   friendId: string
   uploadState: UploadState
 }
 
-export class AddFriend extends React.PureComponent<
-  AddFriendProps,
-  AddFriendState
+export class RemoveFriend extends React.PureComponent<
+  RemoveFriendProps,
+  RemoveFriendState
 > {
-  state: AddFriendState = {
+  state: RemoveFriendState = {
     friendId: "",
     uploadState: UploadState.NoFriend
   }
@@ -30,12 +30,12 @@ export class AddFriend extends React.PureComponent<
     event.preventDefault()
 
     try {
-      this.setUploadState(UploadState.AddingFriend)
-      await addFriend(this.props.auth.getIdToken(), { friendId : this.state.friendId})
+      this.setUploadState(UploadState.RemovingFriend)
+      await deleteFriend(this.props.auth.getIdToken(), this.state.friendId)
 
-      alert('Friend added!')
+      alert('Friend removed!')
     } catch (e) {
-      alert('Could not add friend: ' + (e as Error).message)
+      alert('Could not remove friend: ' + (e as Error).message)
     } finally {
       this.setUploadState(UploadState.NoFriend)
     }
@@ -54,13 +54,13 @@ export class AddFriend extends React.PureComponent<
   render() {
     return (
       <div>
-        <h1>Add new friend</h1>
+        <h1>Remove friend</h1>
 
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
             <label>FriendId</label>
             <input
-              placeholder="FriendId to add"
+              placeholder="FriendId to remove"
               onChange={this.handleInput}
             />
           </Form.Field>
@@ -79,7 +79,7 @@ export class AddFriend extends React.PureComponent<
           loading={this.state.uploadState !== UploadState.NoFriend}
           type="submit"
         >
-          Add Friend
+          Remove Friend
         </Button>
       </div>
     )
