@@ -3,21 +3,13 @@
   "title": "group",
   "type": "object",
   "properties": {
-    "name": {
+    "friendId": {
       "type": "string",
       "minLength": 1
-    },
-    "dueDate": {
-      "type": "string"
-    },
-    "done": {
-      "type": "boolean"
     }
   },
   "required": [
-    "name",
-    "dueDate",
-    "done"
+    "friendId"
   ],
   "additionalProperties": false
 }

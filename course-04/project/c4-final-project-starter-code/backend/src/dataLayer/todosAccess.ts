@@ -1,6 +1,6 @@
 import * as AWS from 'aws-sdk'
-import * as AWSXRay from 'aws-xray-sdk'
-const XAWS = AWSXRay.captureAWS(AWS)
+//import * as AWSXRay from 'aws-xray-sdk'
+//const XAWS = AWSXRay.captureAWS(AWS)
 import { DocumentClient } from 'aws-sdk/clients/dynamodb'
 import { createLogger } from '../utils/logger'
 import { TodoItem } from '../models/TodoItem'
@@ -99,12 +99,12 @@ function createDynamoDBClient()
       if (process.env.IS_OFFLINE)
       {
         console.log('Creating local dynamoDB instance')
-        return new XAWS.DynamoDB.DocumentClient({
+        return new AWS.DynamoDB.DocumentClient({
           accessKeyId: 'AKID',
           region: 'localhost',
           endpoint: 'http://localhost:8000'
         })
       }
 
-      return new XAWS.DynamoDB.DocumentClient()
+      return new AWS.DynamoDB.DocumentClient()
     }

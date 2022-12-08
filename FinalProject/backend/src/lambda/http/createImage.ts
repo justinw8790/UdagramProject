@@ -2,15 +2,15 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import 'source-map-support/register'
 import * as middy from 'middy'
 import { cors, httpErrorHandler } from 'middy/middlewares'
-import { CreateTodoRequest } from '../../requests/CreateTodoRequest'
-import { createTodo } from '../../businessLayer/todos'
+import { CreateImageRequest } from '../../requests/CreateImageRequest'
+import { createImage } from '../../businessLayer/images'
 import { createLogger } from '../../utils/logger'
 import { getJwtToken } from '../utils'
 import { attachmentUtils } from '../../helpers/attachmentUtils'
 import { parseUserId } from '../../auth/utils'
 import * as uuid from 'uuid'
 
-const logger = createLogger('Todos')
+const logger = createLogger('Images')
 const attachmentUtil = new attachmentUtils()
 
 export const handler = middy(
@@ -18,19 +18,19 @@ export const handler = middy(
     logger.info('Processing Event ', event)
 
     const jwtToken: string = getJwtToken(event)
-    const newTodo: CreateTodoRequest = JSON.parse(event.body)
+    const newImage: CreateImageRequest = JSON.parse(event.body)
 
     const userId: string = parseUserId(jwtToken)
     logger.info(`User id parsed: ${userId}`)
 
-    const toDoItem = await createTodo(newTodo, userId, uuid.v4())
-    const todoId = toDoItem.todoId
-    const url = attachmentUtil.generateUploadUrl(todoId)
+    const imageItem = await createImage(newImage, userId, uuid.v4())
+    const imageId = imageItem.imageId
+    const url = attachmentUtil.generateUploadUrl(imageId)
 
     return {
       statusCode: 201,
       body: JSON.stringify({
-        item: toDoItem,
+        item: imageItem,
         uploadUrl: url
       })
     }
@@ -41,6 +41,7 @@ handler
   .use(httpErrorHandler())
   .use(
     cors({
+      origin:'*',
       credentials: true
     })
 )

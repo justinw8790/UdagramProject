@@ -6,18 +6,10 @@
     "name": {
       "type": "string",
       "minLength": 1
-    },
-    "dueDate": {
-      "type": "string"
-    },
-    "done": {
-      "type": "boolean"
     }
   },
   "required": [
-    "name",
-    "dueDate",
-    "done"
+    "name"
   ],
   "additionalProperties": false
 }
